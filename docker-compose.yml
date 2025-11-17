@@ -1,0 +1,9 @@
+services:
+  frontend:
+    # BUILD the image from the 'frontend' directory
+    build: ./frontend
+    container_name: todo_frontend
+    ports:
+      - "80:80"
+    # The 'volumes:' section has been removed.
+    # The files are now built directly into the image.
