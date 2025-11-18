@@ -22,11 +22,13 @@ button.addEventListener('click', () => {
     const curretValue = taskInput.value;
     if(curretValue === '') {
         alert('Please enter the value');
+        return;
     } 
     let task = AddTask(curretValue);
     tasks.push(task);
     console.log('tasks before upsert',tasks);
     upsertData(tasks);
+    createTaskElement(task);
     taskInput.value = '';
 })
 
@@ -49,6 +51,7 @@ function upsertData(tasks) {
 
 function getData() {
     let tasksJson = localStorage.getItem(myTodoList);
+    console.log('this is from the getdata() ',tasksJson);
         if(tasksJson) {
             console.log('cached data is found');
             let loadedtasks = JSON.parse(tasksJson);
