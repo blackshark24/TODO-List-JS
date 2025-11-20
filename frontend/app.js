@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded',()=> {
 });
 
 taskInput.addEventListener('keyup',(event)=> {
-    console.log(event);
     if(event.key === 'Enter') {
-        console.log('this is from the the keyup');
         event.preventDefault();
         button.click();
     }
@@ -26,7 +24,6 @@ button.addEventListener('click', () => {
     } 
     let task = AddTask(curretValue);
     tasks.push(task);
-    console.log('tasks before upsert',tasks);
     upsertData(tasks);
     createTaskElement(task);
     taskInput.value = '';
@@ -39,7 +36,6 @@ function AddTask(text){
         text : text,
         completed : false
     }
-    console.log('Added into newtask');
 
     return newTask
 }
@@ -51,9 +47,7 @@ function upsertData(tasks) {
 
 function getData() {
     let tasksJson = localStorage.getItem(myTodoList);
-    console.log('this is from the getdata() ',tasksJson);
         if(tasksJson) {
-            console.log('cached data is found');
             let loadedtasks = JSON.parse(tasksJson);
             tasks = loadedtasks;
             for(const task of tasks) {
